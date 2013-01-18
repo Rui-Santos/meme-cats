@@ -7,9 +7,16 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , mongoose = require('mongoose').connect('mongodb://user:pass@staff.mongohq.com:10051/app1170127');
 
-var app = express();
+var app = express(),
+    db = mongoose.connection;
+    
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  console.log('connected');
+});;
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
