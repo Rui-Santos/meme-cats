@@ -4,5 +4,6 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+	var name = req.user ? req.user.name : 'please login';
+	res.render('index', { title: 'Express', name: name });
 };
