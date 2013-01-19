@@ -34,6 +34,25 @@ module.exports = {
 
     }
   , production: {
-
+      root: require('path').normalize(__dirname + '/..'),
+      app: {
+        name: 'wheres my stuff'
+      },
+      db: MONGO_DB,
+      facebook: {
+          clientID: FB_CID
+        , clientSecret: FB_SECRET
+        , callbackURL: 'http://secure-temple-6054.herokuapp.com:'+PORT+'/auth/facebook/callback'
+      },
+      twitter: {
+          clientID: TW_CID
+        , clientSecret: TW_SECRET
+        , callbackURL: 'http://secure-temple-6054.herokuapp.com:'+PORT+'/auth/twitter/callback'
+      },
+      github: {
+          clientID: GH_CID
+        , clientSecret: GH_SECRET
+        , callbackURL: 'http://secure-temple-6054.herokuapp.com:'+PORT+'/auth/github/callback'
+      }
     }
 }
