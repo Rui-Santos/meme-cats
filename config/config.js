@@ -4,7 +4,8 @@ var PORT = process.env.PORT || 3000,
     TW_CID = process.env.TW_CID || '',
     TW_SECRET = process.env.TW_SECRET || '',
     GH_CID = process.env.GH_CID || '',
-    GH_SECRET = process.env.GH_SECRET || '';
+    GH_SECRET = process.env.GH_SECRET || '',
+    MONGO_DB = process.env.MONGO_DB || '';
 
 module.exports = {
     development: {
@@ -12,7 +13,7 @@ module.exports = {
       app: {
         name: 'wheres my stuff'
       },
-      db: 'mongodb://stuffApp:stuff@staff.mongohq.com:10051/app1170127',
+      db: MONGO_DB,
       facebook: {
           clientID: FB_CID
         , clientSecret: FB_SECRET
