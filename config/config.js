@@ -17,17 +17,17 @@ module.exports = {
       facebook: {
           clientID: FB_CID
         , clientSecret: FB_SECRET
-        , callbackURL: 'http://localhost:'+PORT+'/auth/facebook/callback'
+        , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/facebook/callback'
       },
       twitter: {
           clientID: TW_CID
         , clientSecret: TW_SECRET
-        , callbackURL: 'http://localhost:'+PORT+'/auth/twitter/callback'
+        , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/twitter/callback'
       },
       github: {
           clientID: GH_CID
         , clientSecret: GH_SECRET
-        , callbackURL: 'http://localhost:'+PORT+'/auth/github/callback'
+        , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/github/callback'
       }
     }
   , test: {
@@ -42,17 +42,17 @@ module.exports = {
       facebook: {
           clientID: FB_CID
         , clientSecret: FB_SECRET
-        , callbackURL: 'http://secure-temple-6054.herokuapp.com:'+PORT+'/auth/facebook/callback'
+        , callbackURL: 'http://secure-temple-6054.herokuapp.com/auth/facebook/callback'
       },
       twitter: {
           clientID: TW_CID
         , clientSecret: TW_SECRET
-        , callbackURL: 'http://secure-temple-6054.herokuapp.com:'+PORT+'/auth/twitter/callback'
+        , callbackURL: 'http://secure-temple-6054.herokuapp.com/auth/twitter/callback'
       },
       github: {
           clientID: GH_CID
         , clientSecret: GH_SECRET
-        , callbackURL: 'http://secure-temple-6054.herokuapp.com:'+PORT+'/auth/github/callback'
+        , callbackURL: 'http://secure-temple-6054.herokuapp.com/auth/github/callback'
       }
     }
 }
