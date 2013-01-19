@@ -30,7 +30,7 @@ module.exports = {
         , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/github/callback'
       }
     }
-  , test: {
+  , staging: {
 
     }
   , production: {
