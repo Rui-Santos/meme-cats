@@ -56,11 +56,9 @@ app.configure(function(){
   app.use(passport.session());
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(function(req, res, next){
-    console.log(req.user);
     res.locals.user = req.user;
     res.locals.loginText = req.user ? 'logout' : 'login';
     next();
-
   });
   app.use(app.router);
 });
