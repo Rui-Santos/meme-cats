@@ -37,7 +37,7 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(express.methodOverride());
-  
+
   // express/mongo session storage
   app.use(express.session({
     secret: 'noobjs'
@@ -50,18 +50,17 @@ app.configure(function(){
   }));
   // connect flash for flash messages
   app.use(flash());
-  
+
   // use passport session
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(function(req, res, next){
-    console.log(req.user);
     res.locals.user = req.user;
     res.locals.loginText = req.user ? 'logout' : 'login';
     next();
 
-  });  
+  });
   app.use(app.router);
 });
 
