@@ -60,13 +60,13 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(express['static'](path.join(__dirname, 'public')));
-  
+
   app.use(function(req, res, next){
     res.locals.user = req.user;
     res.locals.loginText = req.user ? 'logout' : 'login';
     next();
   });
-  
+
   app.use(app.router);
 
   // handle next(err) calls
@@ -74,7 +74,7 @@ app.configure(function(){
     console.error(err.stack);
     res.send(500, 'Something broke!');
     next(err);
-  });  
+  });
 });
 
 app.configure('development', function(){
