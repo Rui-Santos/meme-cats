@@ -1,60 +1,33 @@
-var mongoose = require('mongoose')
-	, User = mongoose.model('User');
+var mongoose = require('mongoose'),
+    userActions = require('../controllers/user'),
+    User = mongoose.model('User');
 
-exports.signin = function (req, res) {}
 
-// auth callback
-exports.authCallback = function (req, res, next) {
-  res.redirect('/')
-}
+module.exports.init = function(app, passport){
 
-// login
-exports.login = function (req, res) {
-  res.render('users/login', {
-      title: 'Login'
-    , message: req.flash('error')
-  })
-}
+  // user actions
+  app.get('/login', userActions.login);
+  app.get('/signup', userActions.signup);
+  app.get('/logout', userActions.logout);
+  app.post('/users', userActions.create);
+  app.post('/users/session', passport.authenticate('local', {failureRedirect: '/login', failureFlash: 'Invalid email or password.'}), userActions.session);
+  app.get('/users/:userId', userActions.show);
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/login' }), userActions.signin);
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), userActions.authCallback);
+  app.get('/auth/github', passport.authenticate('github', { failureRedirect: '/login' }), userActions.signin);
+  app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), userActions.authCallback);
+  app.get('/auth/twitter', passport.authenticate('twitter', { failureRedirect: '/login' }), userActions.signin);
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }), userActions.authCallback);
 
-// sign up
-exports.signup = function (req, res) {
-  res.render('users/signup', {
-      title: 'Sign up'
-    , user: new User()
-  })
-}
+  app.param('userId', function (req, res, next, id) {
+    User
+      .findOne({ _id : id })
+      .exec(function (err, user) {
+        if (err) return next(err);
+        if (!user) return next(new Error('Failed to load User ' + id));
+        req.profile = user;
+        next();
+      });
+  });
 
-// logout
-exports.logout = function (req, res) {
-  req.logout()
-  res.redirect('/login')
-}
-
-// session
-exports.session = function (req, res) {
-  res.redirect('/')
-}
-
-// signup
-exports.create = function (req, res) {
-  var user = new User(req.body)
-  user.provider = 'local'
-  user.save(function (err) {
-    if (err) {
-      return res.render('users/signup', { errors: err.errors, user: user })
-    }
-    req.logIn(user, function(err) {
-      if (err) return next(err)
-      return res.redirect('/')
-    })
-  })
-}
-
-// show profile
-exports.show = function (req, res) {
-  var user = req.profile;
-  res.render('users/show', {
-      title: user.name
-    , user: user
-  })
-}
+};
