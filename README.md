@@ -26,4 +26,4 @@ Get the .env file then:
 8. for the auth to work you will need to edit your /etc/hosts file and add:
 	127.0.0.1	dev.secure-temple-6054.herokuapp.com
 
-9. sudo gem install pre-commit
+9. ln -s pre-commit.sh .git/hooks/pre-commit
