@@ -9,13 +9,14 @@ var express = require('express')
   , env = process.env.NODE_ENV || 'development'
   , config = require('./config/config')[env]
   , passport = require('passport')
-  , auth = require('./lib/auth/authorization')
+  , auth = require('./middleware/auth/authorization')
   , mongoose = require('mongoose')
   , userModel = require('./models/user')
-  , passportConfig = require('./lib/auth/passport')
+  , passportConfig = require('./middleware/auth/passport')
   , mongoStore = require('connect-mongo')(express)
-  , users = require('./routes/user')
-  , routes = require('./routes')
+  , userRoutes = require('./routes/user')
+  , indexRoutes = require('./routes/index')
+  , imageRoutes = require('./routes/image')
   , User = mongoose.model('User')
   , flash = require('connect-flash');
 
@@ -60,39 +61,28 @@ app.configure(function(){
     res.locals.loginText = req.user ? 'logout' : 'login';
     next();
   });
+  
   app.use(app.router);
+
+  // handle next(err) calls
+  app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.send(500, 'Something broke!');
+  });  
 });
 
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+// init main routes
+indexRoutes.init(app, auth);
 
-// user actions
-app.get('/login', users.login)
-app.get('/signup', users.signup)
-app.get('/logout', users.logout)
-app.post('/users', users.create)
-app.post('/users/session', passport.authenticate('local', {failureRedirect: '/login', failureFlash: 'Invalid email or password.'}), users.session)
-app.get('/users/:userId', users.show)
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/login' }), users.signin)
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), users.authCallback)
-app.get('/auth/github', passport.authenticate('github', { failureRedirect: '/login' }), users.signin)
-app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), users.authCallback)
-app.get('/auth/twitter', passport.authenticate('twitter', { failureRedirect: '/login' }), users.signin)
-app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }), users.authCallback)
+// init image routes
+imageRoutes.init(app, auth);
 
-app.param('userId', function (req, res, next, id) {
-  User
-    .findOne({ _id : id })
-    .exec(function (err, user) {
-      if (err) return next(err)
-      if (!user) return next(new Error('Failed to load User ' + id))
-      req.profile = user
-      next()
-    })
-})
+// init user routes
+userRoutes.init(app, passport, auth);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

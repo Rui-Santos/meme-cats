@@ -5,7 +5,9 @@ var PORT = process.env.PORT || 3000,
     TW_SECRET = process.env.TW_SECRET || '',
     GH_CID = process.env.GH_CID || '',
     GH_SECRET = process.env.GH_SECRET || '',
-    MONGO_DB = process.env.MONGO_DB || '';
+    MONGO_DB = process.env.MONGO_DB || '',
+    S3_ACCESSKEY = process.env.S3_ACCESSKEY || '',
+    S3_SECACCESSKEY = process.env.S3_SECACCESSKEY || '';
 
 module.exports = {
     development: {
@@ -28,6 +30,10 @@ module.exports = {
           clientID: GH_CID
         , clientSecret: GH_SECRET
         , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/github/callback'
+      },
+      s3: {
+        accessKey: S3_ACCESSKEY,
+        secAccessKey: S3_SECACCESSKEY
       }
     }
   , staging: {
@@ -53,6 +59,10 @@ module.exports = {
           clientID: GH_CID
         , clientSecret: GH_SECRET
         , callbackURL: 'http://secure-temple-6054.herokuapp.com/auth/github/callback'
+      },
+      s3: {
+        accessKey: S3_ACCESSKEY,
+        secAccessKey: S3_SECACCESSKEY
       }
     }
 }
