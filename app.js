@@ -18,6 +18,7 @@ var express = require('express'),
     imageRoutes = require('./routes/image'),
     flash = require('connect-flash');
 
+// init db connection
 mongoose.connect(config.db);
 
 // init passport configuration

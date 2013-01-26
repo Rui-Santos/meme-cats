@@ -1,8 +1,7 @@
+var mainActions = require('../controllers/index');
 
-/*
- * GET home page.
- */
+module.exports.init = function(app, auth){
 
-exports.index = function(req, res){
-	res.render('index', { title: 'Express'});
-};
+  app.get('/', auth.requiresLogin, mainActions.index);
+
+}
