@@ -1,9 +1,10 @@
 var mongoose = require('mongoose'),
     userActions = require('../controllers/user'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    passport = require('passport');
 
 
-module.exports.init = function(app, passport){
+module.exports.init = function(app){
 
   // user actions
   app.get('/login', userActions.login);

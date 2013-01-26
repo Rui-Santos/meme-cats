@@ -84,4 +84,4 @@ UserSchema.method('encryptPassword', function(password) {
   return crypto.createHmac('sha1', this.salt).update(password).digest('hex')
 })
 
-exports.User = mongoose.model('User', UserSchema);
+mongoose.model('User', UserSchema);

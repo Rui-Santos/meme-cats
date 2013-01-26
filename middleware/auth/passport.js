@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
 
-module.exports.init = function (passport, config) {
+module.exports = function (passport, config) {
   // require('./initializer')
 
   // serialize sessions

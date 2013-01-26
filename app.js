@@ -6,25 +6,29 @@
 var express = require('express'),
     http = require('http'),
     path = require('path'),
+    fs = require('fs'),
     env = process.env.NODE_ENV || 'development',
     config = require('./config/config')[env],
     passport = require('passport'),
-    auth = require('./middleware/auth/authorization'),
     mongoose = require('mongoose'),
-    passportConfig = require('./middleware/auth/passport'),
     mongoStore = require('connect-mongo')(express),
-    userRoutes = require('./routes/user'),
-    indexRoutes = require('./routes/index'),
-    imageRoutes = require('./routes/image'),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    routesPath = __dirname + '/routes',
+    modelsPath = __dirname + '/models',
+    app = express();
 
 // init db connection
 mongoose.connect(config.db);
 
-// init passport configuration
-passportConfig.init(passport, config);
+// load models
+fs.readdirSync(modelsPath).forEach(function (file) {
+  if(file.match(/.js$/)){
+    require(modelsPath+'/'+file);
+  }
+});
 
-var app = express();
+// init passport configuration
+require('./middleware/auth/passport')(passport, config);
 
 // configure express
 app.configure(function(){
@@ -56,6 +60,7 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(express['static'](path.join(__dirname, 'public')));
+  
   app.use(function(req, res, next){
     res.locals.user = req.user;
     res.locals.loginText = req.user ? 'logout' : 'login';
@@ -68,7 +73,7 @@ app.configure(function(){
   app.use(function(err, req, res, next) {
     console.error(err.stack);
     res.send(500, 'Something broke!');
-    next();
+    next(err);
   });  
 });
 
@@ -76,14 +81,12 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-// init main routes
-indexRoutes.init(app, auth);
-
-// init image routes
-imageRoutes.init(app, auth);
-
-// init user routes
-userRoutes.init(app, passport, auth);
+// load routes
+fs.readdirSync(routesPath).forEach(function (file) {
+  if(file.match(/.js$/)){
+    require(routesPath+'/'+file).init(app);
+  }
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
