@@ -3,22 +3,20 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , http = require('http')
-  , path = require('path')
-  , env = process.env.NODE_ENV || 'development'
-  , config = require('./config/config')[env]
-  , passport = require('passport')
-  , auth = require('./middleware/auth/authorization')
-  , mongoose = require('mongoose')
-  , userModel = require('./models/user')
-  , passportConfig = require('./middleware/auth/passport')
-  , mongoStore = require('connect-mongo')(express)
-  , userRoutes = require('./routes/user')
-  , indexRoutes = require('./routes/index')
-  , imageRoutes = require('./routes/image')
-  , User = mongoose.model('User')
-  , flash = require('connect-flash');
+var express = require('express'),
+    http = require('http'),
+    path = require('path'),
+    env = process.env.NODE_ENV || 'development',
+    config = require('./config/config')[env],
+    passport = require('passport'),
+    auth = require('./middleware/auth/authorization'),
+    mongoose = require('mongoose'),
+    passportConfig = require('./middleware/auth/passport'),
+    mongoStore = require('connect-mongo')(express),
+    userRoutes = require('./routes/user'),
+    indexRoutes = require('./routes/index'),
+    imageRoutes = require('./routes/image'),
+    flash = require('connect-flash');
 
 mongoose.connect(config.db);
 
@@ -41,12 +39,12 @@ app.configure(function(){
 
   // express/mongo session storage
   app.use(express.session({
-    secret: 'noobjs'
-    , cookie: { maxAge: 24 * 60 * 60 * 1000 }
-    , store: new mongoStore({
-        url: config.db
-        , collection : 'sessions'
-        , clear_interval: 3600
+    secret: 'noobjs',
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    store: new mongoStore({
+        url: config.db,
+        collection : 'sessions',
+        clear_interval: 3600
       })
   }));
   // connect flash for flash messages
@@ -55,7 +53,7 @@ app.configure(function(){
   // use passport session
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express['static'](path.join(__dirname, 'public')));
   app.use(function(req, res, next){
     res.locals.user = req.user;
     res.locals.loginText = req.user ? 'logout' : 'login';
@@ -68,6 +66,7 @@ app.configure(function(){
   app.use(function(err, req, res, next) {
     console.error(err.stack);
     res.send(500, 'Something broke!');
+    next();
   });  
 });
 
@@ -87,6 +86,3 @@ userRoutes.init(app, passport, auth);
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
-
-
-// test
