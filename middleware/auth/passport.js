@@ -3,7 +3,6 @@ var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
-    GitHubStrategy = require('passport-github').Strategy,
     User = mongoose.model('User');
 
 
@@ -97,30 +96,4 @@ module.exports = function (passport, config) {
     }
   ));
 
-  // use github strategy
-  passport.use(new GitHubStrategy({
-      clientID: config.github.clientID,
-      clientSecret: config.github.clientSecret,
-      callbackURL: config.github.callbackURL
-    },
-    function(accessToken, refreshToken, profile, done) {
-      User.findOne({ 'github.id': profile.id }, function (err, user) {
-        if (!user) {
-          user = new User({
-              name: profile.displayName,
-              email: profile.emails[0].value,
-              username: profile.username,
-              provider: 'github',
-              github: profile._json
-          });
-          user.save(function (err) {
-            if (err) console.log(err);
-            return done(err, user);
-          });
-        } else {
-          return done(err, user);
-        }
-      });
-    }
-  ));
 };

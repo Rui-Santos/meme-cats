@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   crypto = require('crypto'),
-  authTypes = ['github', 'twitter', 'facebook'],
+  authTypes = ['twitter', 'facebook'],
 
   UserSchema = new Schema({
     name: String,
@@ -13,9 +13,7 @@ var mongoose = require('mongoose'),
     hashed_password: String,
     salt: String,
     facebook: {},
-    twitter: {},
-    github: {},
-    google: {}
+    twitter: {}
   });
 
 // virtual attributes

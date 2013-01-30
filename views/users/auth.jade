@@ -5,13 +5,10 @@ block main
 
 block content
   .row
-    .offset1.span5
-      a(href="/auth/facebook")
-        img(src="/images/auth/facebook.png")
-      a(href="/auth/github")
-        img(src="/images/auth/github.png")
-      a(href="/auth/twitter")
-        img(src="/images/auth/twitter.png")
+    div
+      a(href="/auth/facebook") facebook
+    div
+      a(href="/auth/twitter") twitter
     .span6
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
