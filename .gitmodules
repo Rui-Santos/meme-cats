@@ -1,6 +1,3 @@
 [submodule "public/stylesheets/320_up"]
 	path = public/stylesheets/320_up
 	url = https://github.com/malarkey/320andup.git
-[submodule "public/stylesheets/oocss"]
-	path = public/stylesheets/oocss
-	url = git://github.com/stubbornella/oocss.git
