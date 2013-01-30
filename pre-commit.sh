@@ -4,6 +4,8 @@ var exec = require('child_process').exec,
     fail = '\x1B[31mfailed!\x1B[39m',
     ok = '\x1B[32mok\x1B[39m',
     path,
+    isJS = new RegExp('[\W.]js$'),
+    browserJS = new RegExp('^(public/javascripts)(/[a-zA-Z0-9_.-]+)+/?([.]+js)$'),
     notfound = '\x1B[33mn/a\x1B[39m (no script found)',
     
     gitRoot = exec('git rev-parse --show-toplevel');
@@ -28,11 +30,17 @@ function init(){
     var files = exec('git diff-index --cached HEAD --name-only');
 
     files.stdout.on('data', function(data){
-        var fileArr = data.toString().trim().split(/\r\n|\r|\n/);
+        var fileArr = data.toString().trim().split(/\r\n|\r|\n/),
+            jsHintConf = path + '/jshintconf.json',
+            jsHintBrowserConf = path + '/jshintbrowserconf.json';
 
         fileArr.forEach(function(file){
-            if(file.match(/.js$/)){
-                runJshint(file);
+            if(file.match(isJS)){
+                if(file.match(browserJS)){
+                    runJshint(file, jsHintBrowserConf);
+                }else{
+                    runJshint(file, jsHintConf);
+                }
             }
         });
     });
@@ -54,10 +62,9 @@ function clearStash(callback){
     });    
 }
 
-function runJshint(file) {
+function runJshint(file, conf) {
 
-    var jsHintConf = path + '/jshintconf.json',
-        jsHint = exec('jshint --config ' + jsHintConf + ' ' + path+'/'+file, { cwd: path }),
+    var jsHint = exec('jshint --config ' + conf + ' ' + path+'/'+file, { cwd: path }),
         errors = 0;
 
     // js errors
