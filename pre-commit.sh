@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var exec = require('child_process').exec,
+    fs = require('fs'),
     fail = '\x1B[31mfailed!\x1B[39m',
     ok = '\x1B[32mok\x1B[39m',
     path,
@@ -35,11 +36,13 @@ function init(){
             jsHintBrowserConf = path + '/jshintbrowserconf.json';
 
         fileArr.forEach(function(file){
-            if(file.match(isJS)){
-                if(file.match(browserJS)){
-                    runJshint(file, jsHintBrowserConf);
-                }else{
-                    runJshint(file, jsHintConf);
+            if(fs.existsSync(file)){
+                if(file.match(isJS)){
+                    if(file.match(browserJS)){
+                        runJshint(file, jsHintBrowserConf);
+                    }else{
+                        runJshint(file, jsHintConf);
+                    }
                 }
             }
         });
