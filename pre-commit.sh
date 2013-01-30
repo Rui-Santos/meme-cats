@@ -6,6 +6,7 @@ var exec = require('child_process').exec,
     ok = '\x1B[32mok\x1B[39m',
     path,
     isJS = new RegExp('[\W.]js$'),
+    isCSS = new RegExp('[\W.]css$'),
     browserJS = new RegExp('^(public/js)(/[a-zA-Z0-9_.-]+)+/?([.]+js)$'),
     notfound = '\x1B[33mn/a\x1B[39m (no script found)',
     
@@ -35,14 +36,16 @@ function init(){
             jsHintConf = path + '/build/config/jshintconf.json',
             jsHintBrowserConf = path + '/build/config/jshintbrowserconf.json';
 
-        fileArr.forEach(function(file){
-            if(fs.existsSync(file)){
-                if(file.match(isJS)){
-                    if(file.match(browserJS)){
+        fileArr.forEach( function(file) {
+            if ( fs.existsSync(file) ) {
+                if ( file.match(isJS) ) {
+                    if ( file.match(browserJS) ) {
                         runJshint(file, jsHintBrowserConf);
-                    }else{
+                    } else {
                         runJshint(file, jsHintConf);
                     }
+                } else if ( file.match(isCSS) ) {
+
                 }
             }
         });
