@@ -6,7 +6,7 @@ var exec = require('child_process').exec,
     ok = '\x1B[32mok\x1B[39m',
     path,
     isJS = new RegExp('[\W.]js$'),
-    browserJS = new RegExp('^(public/javascripts)(/[a-zA-Z0-9_.-]+)+/?([.]+js)$'),
+    browserJS = new RegExp('^(public/js)(/[a-zA-Z0-9_.-]+)+/?([.]+js)$'),
     notfound = '\x1B[33mn/a\x1B[39m (no script found)',
     
     gitRoot = exec('git rev-parse --show-toplevel');
