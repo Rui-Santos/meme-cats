@@ -32,8 +32,8 @@ function init(){
 
     files.stdout.on('data', function(data){
         var fileArr = data.toString().trim().split(/\r\n|\r|\n/),
-            jsHintConf = path + '/jshintconf.json',
-            jsHintBrowserConf = path + '/jshintbrowserconf.json';
+            jsHintConf = path + '/build/config/jshintconf.json',
+            jsHintBrowserConf = path + '/build/config/jshintbrowserconf.json';
 
         fileArr.forEach(function(file){
             if(fs.existsSync(file)){
