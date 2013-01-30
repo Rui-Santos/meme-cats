@@ -3,4 +3,4 @@
 	url = https://github.com/malarkey/320andup.git
 [submodule "public/stylesheets/oocss"]
 	path = public/stylesheets/oocss
-	url = https://github.com/stubbornella/oocss.git
+	url = git://github.com/stubbornella/oocss.git
