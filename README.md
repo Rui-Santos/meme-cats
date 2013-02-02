@@ -27,4 +27,4 @@ wheres-my-stuff
 
 ##Start the app
 
-*node app.js
+node app.js
