@@ -18,7 +18,7 @@ require.config({
 
 require(["jquery"], function() {
     //loaded all scripts
-    'use strict'
+    "use strict";
     $(function() {
 
     });
