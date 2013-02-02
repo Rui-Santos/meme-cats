@@ -1,6 +1,8 @@
 wheres-my-stuff
 ===============
 
+[![Nodejitsu Deploy Status Badges](https://webhooks.nodejitsu.com/jsturgis/wheres-my-stuff.png)](https://webops.nodejitsu.com#jsturgis/webhooks)
+[![Build Status](https://secure.travis-ci.org/jsturgis/wheres-my-stuff.png)](http://travis-ci.org/jsturgis/wheres-my-stuff)
 
 ##installation
 
