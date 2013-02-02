@@ -28,42 +28,42 @@ module.exports = {
       },
       db: MONGO_DB,
       facebook: {
-          clientID: FB_CID
-        , clientSecret: FB_SECRET
-        , callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/facebook/callback'
+          clientID: FB_CID,
+          clientSecret: FB_SECRET,
+          callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/facebook/callback'
       },
       twitter: {
-          clientID: TW_CID
-        , clientSecret: TW_SECRET
-        , callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/twitter/callback'
+          clientID: TW_CID,
+          clientSecret: TW_SECRET,
+          callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/twitter/callback'
       },
       s3: {
         accessKey: S3_ACCESSKEY,
         secAccessKey: S3_SECACCESSKEY
       }
-    }
-  , staging: {
+    },
+    staging: {
 
-    }
-  , production: {
+    },
+    production: {
       root: require('path').normalize(__dirname + '/..'),
       app: {
         name: 'wheres my stuff'
       },
       db: MONGO_DB,
       facebook: {
-          clientID: FB_CID
-        , clientSecret: FB_SECRET
-        , callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/facebook/callback'
+          clientID: FB_CID,
+          clientSecret: FB_SECRET,
+          callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/facebook/callback'
       },
       twitter: {
-          clientID: TW_CID
-        , clientSecret: TW_SECRET
-        , callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/twitter/callback'
+          clientID: TW_CID,
+          clientSecret: TW_SECRET,
+          callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/twitter/callback'
       },
       s3: {
         accessKey: S3_ACCESSKEY,
         secAccessKey: S3_SECACCESSKEY
       }
     }
-}
+};
