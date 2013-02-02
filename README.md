@@ -4,28 +4,27 @@ wheres-my-stuff
 
 ##installation
 
-Get the .env file then:
-
 1. install nodejs or update to latest:
 	http://nodejs.org/
 
-2. Install Heroku toolbelt
-
-3. git clone the project:
+2. git clone the project:
 	https://github.com/jsturgis/wheres-my-stuff
 
-4. open .env and change NODE_ENV to:
-	NODE_ENV=development
+3. switch to dev branch "git checkout development"
 
-5. run "npm install" from the terminal
+4. run "npm install" from the terminal
 
-6. run "git submodule init" from the terminal
+5. run "git submodule init" from the terminal
 
-7. run "git submodule update" from the terminal
+6. run "git submodule update" from the terminal
 
-8. for the auth to work you will need to edit your /etc/hosts file and add:
-	127.0.0.1	dev.secure-temple-6054.herokuapp.com
+7. for the auth to work you will need to edit your /etc/hosts file and add:
+	127.0.0.1	dev.jsturgis.wheres-my-stuff.jit.su
 
-9. cp pre-commit.sh .git/hooks/pre-commit & chmod 755 .git/hooks/pre-commit
+8. cp pre-commit.sh .git/hooks/pre-commit & chmod 755 .git/hooks/pre-commit
 
-10. sudo npm install jshint -g
+9. sudo npm install jshint -g
+
+##Start the app
+
+*node app.js
