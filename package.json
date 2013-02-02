@@ -1,26 +1,39 @@
 {
   "name": "wheres-my-stuff",
-  "version": "0.0.1",
+  "version": "0.0.1-11",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node app.js"
   },
   "engines": {
-        "node": "0.8",
-        "npm": "1"
+    "node": "0.8",
+    "npm": "1"
   },
   "dependencies": {
     "express": "3.0.6",
     "jade": "*",
     "mongoose": "3.5",
-    "passport": "0.1",
+    "passport": "latest",
     "aws2js": "latest",
     "connect-mongo": "latest",
     "connect-flash": "latest",
-    "passport": "latest",
     "passport-local": "latest",
     "passport-facebook": "latest",
     "passport-twitter": "latest",
-    "passport-github": "latest"
-  }
+    "passport-github": "latest",
+    "requirejs": "latest",
+    "nconf": "0.6"
+  },
+  "contributors": [
+    {
+      "name": "Jeff Sturgis",
+      "email": "jeffsturgis@gmail.com"
+    },
+    {
+      "name": "Pat Diola",
+      "email": "patdiola@gmail.com"
+    }
+  ],
+  "analyze": false,
+  "subdomain": "jsturgis.wheres-my-stuff"
 }

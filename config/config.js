@@ -1,13 +1,24 @@
-var PORT = process.env.PORT || 3000,
-    FB_CID = process.env.FB_CID || '',
-    FB_SECRET = process.env.FB_SECRET || '',
-    TW_CID = process.env.TW_CID || '',
-    TW_SECRET = process.env.TW_SECRET || '',
-    GH_CID = process.env.GH_CID || '',
-    GH_SECRET = process.env.GH_SECRET || '',
-    MONGO_DB = process.env.MONGO_DB || '',
-    S3_ACCESSKEY = process.env.S3_ACCESSKEY || '',
-    S3_SECACCESSKEY = process.env.S3_SECACCESSKEY || '';
+  var path    = require('path'),
+      nconf = require('nconf');
+
+  //
+  // Setup nconf to use (in-order):
+  //   1. Command-line arguments
+  //   2. Environment variables
+  //   3. A file located at 'path/to/env.json'
+  //
+  nconf.argv()
+       .env()
+       .file({ file: path.join(__dirname, '/env.json') });
+
+var PORT = nconf.get('PORT') || 3000,
+    FB_CID = nconf.get('FB_CID') || '',
+    FB_SECRET = nconf.get('FB_SECRET') || '',
+    TW_CID = nconf.get('TW_CID') || '',
+    TW_SECRET = nconf.get('TW_SECRET') || '',
+    MONGO_DB = nconf.get('MONGO_DB') || '',
+    S3_ACCESSKEY = nconf.get('S3_ACCESSKEY') || '',
+    S3_SECACCESSKEY = nconf.get('S3_SECACCESSKEY') || '';
 
 module.exports = {
     development: {
@@ -19,17 +30,12 @@ module.exports = {
       facebook: {
           clientID: FB_CID
         , clientSecret: FB_SECRET
-        , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/facebook/callback'
+        , callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/facebook/callback'
       },
       twitter: {
           clientID: TW_CID
         , clientSecret: TW_SECRET
-        , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/twitter/callback'
-      },
-      github: {
-          clientID: GH_CID
-        , clientSecret: GH_SECRET
-        , callbackURL: 'http://dev.secure-temple-6054.herokuapp.com:'+PORT+'/auth/github/callback'
+        , callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/twitter/callback'
       },
       s3: {
         accessKey: S3_ACCESSKEY,
@@ -48,17 +54,12 @@ module.exports = {
       facebook: {
           clientID: FB_CID
         , clientSecret: FB_SECRET
-        , callbackURL: 'http://secure-temple-6054.herokuapp.com/auth/facebook/callback'
+        , callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/facebook/callback'
       },
       twitter: {
           clientID: TW_CID
         , clientSecret: TW_SECRET
-        , callbackURL: 'http://secure-temple-6054.herokuapp.com/auth/twitter/callback'
-      },
-      github: {
-          clientID: GH_CID
-        , clientSecret: GH_SECRET
-        , callbackURL: 'http://secure-temple-6054.herokuapp.com/auth/github/callback'
+        , callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/twitter/callback'
       },
       s3: {
         accessKey: S3_ACCESSKEY,
