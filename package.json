@@ -3,7 +3,8 @@
   "version": "0.0.1-11",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "vows --spec"
   },
   "engines": {
     "node": "0.8",
@@ -23,6 +24,9 @@
     "passport-github": "latest",
     "requirejs": "latest",
     "nconf": "0.6"
+  },
+  "devDependencies": {
+    "vows": "0.6.x"
   },
   "contributors": [
     {
