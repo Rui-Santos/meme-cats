@@ -27,3 +27,13 @@ wheres-my-stuff
 ##Start the app
 
 node app.js
+
+##To lint and run tests
+
+grunt test
+
+##To build locally
+
+grunt requirejs:buildLocal
+
+this will build to the tmpbuild dir, after testing you should run grunt exec:clean to remove the dir or delete it manually.
