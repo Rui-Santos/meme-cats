@@ -16,10 +16,7 @@ require.config({
     }
 });
 
-require(["jquery"], function() {
+require(["jquery", "modules/login/math"], function() {
     //loaded all scripts
     "use strict";
-    $(function() {
-
-    });
 });

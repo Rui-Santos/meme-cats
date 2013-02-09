@@ -5,4 +5,4 @@ module.exports.init = function(app){
 
   app.get('/', auth.requiresLogin, mainActions.index);
 
-}
+};

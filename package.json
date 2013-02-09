@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "test": "vows --spec"
+    "test": "grunt test"
   },
   "engines": {
     "node": "0.8",
@@ -26,7 +26,14 @@
     "nconf": "0.6"
   },
   "devDependencies": {
-    "vows": "0.6.x"
+    "grunt": "0.4",
+    "grunt-contrib-jshint": "0.1",
+    "grunt-contrib-nodeunit": "0.1",
+    "grunt-contrib-jasmine": "latest",
+    "grunt-template-jasmine-requirejs": "0.1",
+    "grunt-contrib-connect": "0.1",
+    "grunt-contrib-requirejs": "0.3",
+    "grunt-exec": "git://github.com/jharding/grunt-exec.git#grunt0.4rc"
   },
   "contributors": [
     {
@@ -39,5 +46,8 @@
     }
   ],
   "analyze": false,
-  "subdomain": "jsturgis.wheres-my-stuff"
+  "subdomain": "jsturgis.wheres-my-stuff",
+  "bugs": {
+    "url": "https://github.com/jsturgis/wheres-my-stuff/issues"
+  }
 }

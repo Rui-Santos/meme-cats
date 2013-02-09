@@ -4,5 +4,7 @@ language: node_js
 node_js:
   - 0.8
 
+before_script:
+  - npm install -g grunt-cli
+
 # configure notifications (email, IRC, campfire etc)
-# please update this section to your needs!
