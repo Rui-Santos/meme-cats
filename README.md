@@ -20,7 +20,7 @@ wheres-my-stuff
 6. for the auth to work you will need to edit your /etc/hosts file and add:
 	127.0.0.1	dev.jsturgis.wheres-my-stuff.jit.su
 
-7. cp pre-commit.sh .git/hooks/pre-commit & chmod 755 .git/hooks/pre-commit
+7. cp pre-commit.sh .git/hooks/pre-commit && chmod 755 .git/hooks/pre-commit
 
 8. sudo npm install -g jshint
 
