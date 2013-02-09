@@ -1,26 +1,53 @@
-var config = {
-    appDir: "./tmpbuild/wheres-my-stuff",
-    baseUrl: "./public/js/app/",
-    dir: "./tmpbuild/build",
-    //Comment out the optimize line if you want
-    //the code minified by UglifyJS
-    optimize: "none",
+module.exports = {
+    config: {
+        appDir: "./tmpbuild/wheres-my-stuff",
+        baseUrl: "./public/js/app/",
+        dir: "./tmpbuild/build",
+        //Comment out the optimize line if you want
+        //the code minified by UglifyJS
+        optimize: "none",
 
-    paths: {
-        jquery: "empty:",
-        backbone: "empty:",
-        lodash: "empty:"
+        paths: {
+            jquery: "empty:",
+            backbone: "empty:",
+            lodash: "empty:"
+        },
+
+        mainConfigFile: './public/js/app/main.js',
+
+        modules: [
+            //Optimize the application files. jQuery is not
+            //included since it is already in require-jquery.js
+            {
+                name: "main"
+            }
+        ]
     },
 
-    mainConfigFile: './public/js/app/main.js',
+    configLocal: {
+          options: {
+          appDir: "./",
+          baseUrl: "./public/js/app/",
+          dir: "./tmpbuild",
+          //Comment out the optimize line if you want
+          //the code minified by UglifyJS
+          optimize: "none",
 
-    modules: [
-        //Optimize the application files. jQuery is not
-        //included since it is already in require-jquery.js
-        {
-            name: "main"
+          paths: {
+          jquery: "empty:",
+          backbone: "empty:",
+          lodash: "empty:"
+          },
+
+          mainConfigFile: './public/js/app/main.js',
+
+          modules: [
+          //Optimize the application files. jQuery is not
+          //included since it is already in require-jquery.js
+          {
+              name: "main"
+          }
+          ]
         }
-    ]
+      }
 };
-
-module.exports = config;

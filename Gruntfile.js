@@ -47,8 +47,9 @@ module.exports = function(grunt) {
     },
     requirejs: {
       compile: {
-        options: requirejsConfig
-      }
+        options: requirejsConfig.config
+      },
+      compileLocal: requirejsConfig.configLocal
     },
     exec: {
       tmpClone: {
@@ -73,6 +74,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'test']);
   grunt.registerTask('test', ['jshint', 'connect', 'jasmine:wms', 'nodeunit:all']);
   grunt.registerTask('deploy', ['exec:clean', 'test', 'exec:tmpClone', 'requirejs', 'exec:deploy', 'exec:clean']);
+  grunt.registerTask('buildLocal', ['exec:clean', 'test','requirejs:compileLocal']);
 
   // load plugins
   grunt.loadNpmTasks('grunt-contrib-jasmine');
