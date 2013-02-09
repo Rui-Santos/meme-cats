@@ -1,7 +1,7 @@
 var config = {
-    appDir: "../tmp/wheres-my-stuff",
+    appDir: "./tmpbuild/wheres-my-stuff",
     baseUrl: "./public/js/app/",
-    dir: "../tmp/build",
+    dir: "./tmpbuild/build",
     //Comment out the optimize line if you want
     //the code minified by UglifyJS
     optimize: "none",

@@ -52,12 +52,17 @@ module.exports = function(grunt) {
     },
     exec: {
       tmpClone: {
-        command: 'cd ../ && mkdir tmp && cd tmp && git clone https://github.com/jsturgis/wheres-my-stuff.git --recursive',
+        command: 'mkdir ./tmpbuild && cd ./tmpbuild && git clone https://github.com/jsturgis/wheres-my-stuff.git --recursive',
         stdout: true,
         stderr: true
       },
       deploy: {
-        command: 'cd ../tmp/build && jitsu deploy',
+        command: 'cd ./tmpbuild/build && jitsu deploy --confirm',
+        stdout: true,
+        stderr: true
+      },
+      clean: {
+        command: 'rm -rf ./tmpbuild',
         stdout: true,
         stderr: true
       }
@@ -67,7 +72,7 @@ module.exports = function(grunt) {
   // register tasks
   grunt.registerTask('default', ['jshint', 'test']);
   grunt.registerTask('test', ['jshint', 'connect', 'jasmine:wms', 'nodeunit:all']);
-  grunt.registerTask('deploy', ['test', 'exec:tmpClone', 'requirejs', 'exec:deploy']);
+  grunt.registerTask('deploy', ['test', 'exec:tmpClone', 'requirejs', 'exec:deploy', 'exec:clean']);
 
   // load plugins
   grunt.loadNpmTasks('grunt-contrib-jasmine');
