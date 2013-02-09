@@ -8,7 +8,7 @@ wheres-my-stuff
 1. install nodejs or update to latest:
 	http://nodejs.org/
 
-2. copy the env.json file to the config folder
+2. copy the env.json file to the config folder (request from jeff or pat)
 
 3. git clone the project:
 	https://github.com/jsturgis/wheres-my-stuff --recursive
@@ -22,7 +22,11 @@ wheres-my-stuff
 
 7. cp pre-commit.sh .git/hooks/pre-commit & chmod 755 .git/hooks/pre-commit
 
-8. sudo npm install jshint -g
+8. sudo npm install -g jshint
+
+9. sudo npm install -g grunt-cli
+
+10. (windows only) from windows run grunt jshint before committing and fix any errors, all other OS will do this automatically via a pre-commit hook.
 
 ##Start the app
 
