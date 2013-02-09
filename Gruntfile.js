@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         stderr: true
       },
       deploy: {
-        command: 'cd ./tmpbuild/build && jitsu deploy --confirm',
+        command: 'cd ./tmpbuild/build && jitsu deploy --confirm --raw',
         stdout: true,
         stderr: true
       },
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
   // register tasks
   grunt.registerTask('default', ['jshint', 'test']);
   grunt.registerTask('test', ['jshint', 'connect', 'jasmine:wms', 'nodeunit:all']);
-  grunt.registerTask('deploy', ['test', 'exec:tmpClone', 'requirejs', 'exec:deploy', 'exec:clean']);
+  grunt.registerTask('deploy', ['exec:clean', 'test', 'exec:tmpClone', 'requirejs', 'exec:deploy', 'exec:clean']);
 
   // load plugins
   grunt.loadNpmTasks('grunt-contrib-jasmine');
