@@ -5,13 +5,36 @@ html(lang="en")
     title= title
     link(rel='stylesheet', media='all', href='/stylesheets/oocsslib/all.css')
   body
-    h1 Header
-        a(href="/"+loginText)= loginText
+  
+    .wrapper-a
+        .row
+            a.fr(href="/"+loginText)= loginText
         
-    h2 
-          |  Pat's first commit.
+        .row.center-text
+            img(src="images/logo.png")
+            
+        hr
         
-    .page
+        .row
+            .login
+                h2
+                    | LOGIN
+                .login-thumb.a
+                    | FB
+                .login-thumb.a
+                    | TW
+                .cl
+                    | &nbsp;
+                .login-thumb.b
+                    | Use your email address
+                .cl
+                    
+        hr
+            
+        .row
+            h2 
+              |  Pat's first commit.
+    
         block content
         footer.foot
             h2 Foot
