@@ -8,7 +8,7 @@ html(lang="en")
     .page.gs960
         header#main-header
             p.auth-status
-                a(href="/"+loginText)= loginText
+                a(href=loginHref)= loginText
             h1 Header
 
         h2
@@ -18,5 +18,5 @@ html(lang="en")
             h2 Foot
             p
               | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    script(data-main='js/app/main', src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js')
+    script(data-main='/js/app/main', src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js')
     block scripts
