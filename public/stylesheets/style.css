@@ -1,5 +1,6 @@
 @import url("forms.css");
 @import url("oocsslib/core/media/media.css");
 @import url("oocsslib/core/grid/grids.css");
+@import url("oocsslib/core/template/template.css");
 
 .error {display: none;}
