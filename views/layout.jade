@@ -7,11 +7,7 @@ html(lang="en")
   body
 
     .page.gs960
-        header#main-header
-            p.auth-status
-                a(href=loginHref)= loginText
-            .center-text
-                img(src="/images/logo.png")
+        include includes/header
 
         block content
         footer.foot
