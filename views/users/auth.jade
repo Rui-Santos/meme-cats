@@ -4,17 +4,14 @@ block main
   h1= title
 
 block content
-  .row
-    div
-      a(href="/auth/facebook") facebook
-    div
-      a(href="/auth/twitter") twitter
-    .span6
+  .line
+    .unit.size1of1
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
           a.close(data-dismiss="alert", href="javascript:void(0)") x
           ul
             each error in errors
               li= error.type
-
+    .login
+      h2.login-header Login
       block auth

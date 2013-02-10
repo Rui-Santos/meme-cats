@@ -1,0 +1,6 @@
+/* login */
+.login {max-width:50%;margin:0 auto;}
+.login-thumb {float:left;background-color:#b3b8b0;padding:5%;margin-bottom:20px;}
+.login-thumb.a {width:35%;margin-right:5%;}
+.login-thumb.a:nth-child(2) {float:right;margin-right:0px;}
+.login-thumb.b {width:90%;margin-right:0;}

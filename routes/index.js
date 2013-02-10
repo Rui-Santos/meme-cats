@@ -1,8 +1,7 @@
-var mainActions = require('../controllers/index'),
-    auth = require('../middleware/auth/authorization');
+var mainActions = require('../controllers/index');
 
 module.exports.init = function(app){
 
-  app.get('/', auth.requiresLogin, mainActions.index);
+  app.get('/', mainActions.index);
 
 };

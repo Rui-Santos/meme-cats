@@ -5,14 +5,14 @@ html(lang="en")
     title= title
     link(rel='stylesheet', media='all', href='/stylesheets/style.css')
   body
+
     .page.gs960
         header#main-header
             p.auth-status
                 a(href=loginHref)= loginText
-            h1 Header
+            .center-text
+                img(src="/images/logo.png")
 
-        h2
-              |  Pat's first commit.
         block content
         footer.foot
             h2 Foot

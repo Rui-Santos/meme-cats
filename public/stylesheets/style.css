@@ -1,9 +1,44 @@
+/* HTML5 Boilerplate normalize css */
 @import url("normalize/normalize.css");
+
+/* blueprint form styles */
 @import url("forms.css");
+
+/* media module structure image on the left content on the right */
 @import url("oocsslib/core/media/media.css");
+
+/* grid framework */
 @import url("oocsslib/core/grid/grids.css");
+
+/* base page template sets page width, column width and fixes some IE bugs */
 @import url("oocsslib/core/template/template.css");
+
+/* helper styles */
+@import url("helpers.css");
+
+/* page header styles */
 @import url("page/header.css");
 
+/* page login styles */
+@import url("page/header.css");
+
+/* Layout */
+.page {max-width:1382px;margin:0 auto;} /* todo: Use SASS or LESS for global width */
+img {max-width:100%;margin:0 auto;}
+
 .error {display: none;}
-.clearfix {overflow:hidden;}
+
+/* Theme */
+html {background-color:#bec3bb;font-family:arial, helvetica, sans-serif;}
+h1, h2, h3, h4, a, a:visited, a:hover, a:active, a:focus {color:#586b63;outline:none;text-decoration:none;}
+a:hover {text-decoration:underline;}
+.center-text {text-align:center;}
+p, hr, ul, ol {margin-bottom:20px;}
+hr {border:none;border-top:1px #b1b5af solid;border-bottom:1px #d1d4ce solid;}
+
+
+@media screen and (max-width: 1582px) { /* todo: Use SASS or LESS for global width + 200px */
+
+	.page {padding-left:5%;padding-right:5%;}
+
+}
