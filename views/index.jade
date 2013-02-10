@@ -2,15 +2,22 @@ extends layout
 
 block content
   .body
+    hr
     if !user
       // login methods
-      hr
       .login
         h2.login-header Login
         include includes/login-form
-      hr
     else
       // user is already logged in
-      hr
-      a(href="/logout") Logout
-      hr
+
+      h2.add-item-header.header Track an item!
+      .add-item
+
+        // TODO: write a module to hook this up
+        form(action='/post/', method='POST', enctype='multipart/form-data')
+          input(type='file', name='img')
+
+      p.logout
+        a(href="/logout") Logout
+    hr
