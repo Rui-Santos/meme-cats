@@ -3,8 +3,9 @@ html(lang="en")
   head
     meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
     title= title
-    link(rel='stylesheet', media='all', href='/stylesheets/oocsslib/all.css')
+    link(rel='stylesheet', media='all', href='/stylesheets/style.css')
   body
+<<<<<<< HEAD
   
     .wrapper-a
         .row
@@ -35,10 +36,18 @@ html(lang="en")
             h2 
               |  Pat's first commit.
     
+=======
+
+    .page.gs960
+        // common header
+        include includes/header
+
+>>>>>>> a385b51934306ae86e7eec71ff731954f3cf969f
         block content
-        footer.foot
-            h2 Foot
-            p
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    script(data-main='js/app/main', src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js')
+
+        // common footer
+        include includes/footer
+
+    // script block
+    script(data-main='/js/app/main', src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js')
     block scripts

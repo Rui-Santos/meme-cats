@@ -62,7 +62,8 @@ app.configure(function(){
 
   app.use(function(req, res, next){
     res.locals.user = req.user;
-    res.locals.loginText = req.user ? 'logout' : 'login';
+    res.locals.loginText = req.user ? req.user.name : 'login';
+    res.locals.loginHref = req.user ? '/users/'+req.user._id : '/login';
     next();
   });
 
@@ -88,6 +89,7 @@ fs.readdirSync(routesPath).forEach(function (file) {
 });
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+  if(env === 'development'){
+    console.log('Express server listening on port ' + app.get('port'));
+  }
 });
-//aa
