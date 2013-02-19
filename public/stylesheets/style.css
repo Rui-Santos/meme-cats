@@ -26,8 +26,6 @@
 .page {max-width:1382px;margin:0 auto;} /* todo: Use SASS or LESS for global width */
 img {max-width:100%;margin:0 auto;}
 
-.error {display: none;}
-
 /* Theme */
 html {background-color:#bec3bb;font-family:arial, helvetica, sans-serif;}
 h1, h2, h3, h4, a, a:visited, a:hover, a:active, a:focus {color:#586b63;outline:none;text-decoration:none;}
