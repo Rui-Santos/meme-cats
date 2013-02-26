@@ -4,3 +4,4 @@ block content
     ul.list
         each possession in possessions
             li(id= possession._id) #{possession.name}
+            img(src= possession.photo, height="100")

@@ -11,11 +11,11 @@ var mongoose = require('mongoose'),
     publicItem: Boolean,
     lendable: Boolean,
     lent: Boolean,
-    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+    owner: { 'type': Schema.Types.ObjectId, 'ref': 'User' },
     condition: String,
     price: String,
     category: String,
-    dateCreated: Date
+    dateCreated: {'type': Date, 'default': Date.now}
   });
 
 // methods

@@ -15,8 +15,6 @@ module.exports.init = function(app){
   app.get('/users/:userId', userActions.show);
   app.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/login' }), userActions.signin);
   app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), userActions.authCallback);
-  app.get('/auth/github', passport.authenticate('github', { failureRedirect: '/login' }), userActions.signin);
-  app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), userActions.authCallback);
   app.get('/auth/twitter', passport.authenticate('twitter', { failureRedirect: '/login' }), userActions.signin);
   app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }), userActions.authCallback);
 
