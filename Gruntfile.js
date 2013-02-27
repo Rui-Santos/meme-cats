@@ -73,7 +73,7 @@ module.exports = function(grunt) {
   // register tasks
   grunt.registerTask('default', ['jshint', 'test']);
   grunt.registerTask('test', ['jshint', 'connect', 'jasmine:wms', 'nodeunit:all']);
-  grunt.registerTask('deploy', ['exec:clean', 'test', 'exec:tmpClone', 'requirejs', 'exec:deploy', 'exec:clean']);
+  grunt.registerTask('deploy', ['exec:clean', 'test', 'exec:tmpClone', 'requirejs:compile', 'exec:deploy', 'exec:clean']);
   grunt.registerTask('buildLocal', ['exec:clean', 'test','requirejs:compileLocal']);
 
   // load plugins
