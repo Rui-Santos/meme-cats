@@ -3,5 +3,10 @@ extends ../layout
 block content
     ul.list
         each possession in possessions
-            li(id= possession._id) #{possession.name}
-            img(src= possession.photo, height="100")
+            li(id= possession._id)
+                h3 #{possession.name}
+                if resourcePath.match(possession._id)
+                    img(src= possession.photo, height="100")
+                else
+                    a(href=resourcePath + '/' + possession._id)
+                        img(src= possession.photo, height="100")

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    Possession = mongoose.model('Possession'),
     User = mongoose.model('User');
 
 exports.signin = function () {};
@@ -41,7 +42,11 @@ exports.create = function (req, res, next) {
   user.provider = 'local';
   user.save(function (err) {
     if (err) {
-      return res.render('users/signup', { errors: err.errors, user: user });
+      // duplicate username
+      if(err.code === 11000){
+        err.errors = { user_exists:{ type: 'Username already exists' }};
+      }
+      return res.render('users/signup', { errors: err.errors, user: user, title: 'signup' });
     }
     req.logIn(user, function(err) {
       if (err) return next(err);
@@ -51,10 +56,25 @@ exports.create = function (req, res, next) {
 };
 
 // show profile
-exports.show = function (req, res) {
-  var user = req.profile;
-  res.render('users/show', {
-      title: user.name,
-      user: user
-  });
+exports.show = function (req, res, next) {
+  var user = req.profile,
+      possLink = req.path + '/possessions';
+
+    res.format({
+        html: function(){
+            return  res.render('users/show', {
+                        title: user.name,
+                        user: user,
+                        possessions: possLink
+                    });
+        },
+
+        json: function(){
+            var rsp = {
+                user: user,
+                possessions: possLink
+            }
+            return res.json(rsp);
+        }
+    });
 };

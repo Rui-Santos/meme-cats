@@ -1,8 +1,7 @@
 var mongoose = require('mongoose'),
     Possession = mongoose.model('Possession'),
     s3 = require('../lib/image/s3'),
-    fs = require('fs'),
-    findPossessions = Possession.find();
+    fs = require('fs');
 
 
 function validateImage(img){
@@ -72,21 +71,79 @@ function PossessionObject(req, imagePath){
     this.category = req.param('possession-category') || 'stuff';
 }
 
-// most recent public possesions
+// show public possessions
 exports.publicPossessions = function (req, res, next) {
 
-    // display 10 most recent possessions
-    findPossessions.where('publicItem', true)
-        .limit(10)
+    var id = req.param('id'),
+        query = Possession.where('publicItem', true);
+
+    if(id){
+        query.where('_id', id)
+    }else{
+        query.limit(10)
         .sort('-dateCreated')
-        .exec(function (err, items) {
+    }
+
+    // display 10 most recent possessions
+    query.exec(function (err, items) {
+        if (err) {
+          return next(err);
+        }
+        res.format({
+            html: function(){
+                return res.render('possessions/list', {
+                    title: 'possessions',
+                    possessions: items,
+                    resourcePath: req.path
+                });
+            },
+
+            json: function(){
+                var rsp = {
+                    possessions: items,
+                    resourcePath: req.path
+                }
+                return res.json(rsp);
+            }
+        });
+    });
+};
+
+exports.userPossessions = function(req, res, next){
+
+    var userId = req.user.id,
+        id = req.param('id'),
+        query = Possession.where('owner', userId);
+
+    if(id){
+        query.where('_id', id)
+    }else{
+        query.limit(10)
+        .sort('-dateCreated')
+    }
+
+    // display 10 most recent possessions
+    query.exec(function (err, items) {
         if (err) {
           return next(err);
         }
 
-        return res.render('possessions/list', {
-            title: 'possessions',
-            possessions: items
+        res.format({
+            html: function(){
+                return res.render('possessions/list', {
+                    title: 'possessions',
+                    possessions: items,
+                    resourcePath: req.path
+                });
+            },
+
+            json: function(){
+                var rsp = {
+                    possessions: items,
+                    resourcePath: req.path
+                }
+                return res.json(rsp);
+            }
         });
     });
 };
@@ -134,12 +191,17 @@ exports.createPossession = function (req, res, next) {
             html: function(){
                 return res.render('possessions/list', {
                     title: 'possessions',
-                    possessions: [possession]
+                    possessions: [possession],
+                    resourcePath: req.path
                 });
             },
 
             json: function(){
-                return res.json(possession);
+                var rsp = {
+                    possessions: possession,
+                    resourcePath: req.path
+                }
+                return res.json(rsp);
             }
         });
     });
@@ -160,7 +222,7 @@ exports.deletePossession  = function (req, res, next) {
                 if (err) return next(new Error(err));
             });
 
-            res.send(200);
+            res.send(204);
         });
     } else {
         res.send(404);

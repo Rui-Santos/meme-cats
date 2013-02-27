@@ -8,13 +8,15 @@ var mongoose = require('mongoose'),
   UserSchema = new Schema({
     name: String,
     email: String,
-    username: String,
+    username: {type: String, unique: true},
     provider: String,
     hashed_password: String,
     salt: String,
     facebook: {},
     twitter: {}
   });
+
+UserSchema.path('username').index({ unique: true });
 
 // virtual attributes
 UserSchema

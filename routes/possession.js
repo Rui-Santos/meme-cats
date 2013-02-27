@@ -3,7 +3,7 @@ var possessionActions = require('../controllers/possession'),
 
 module.exports.init = function(app){
 
-	app.get('/possessions', possessionActions.publicPossessions);
+	app.get('/possessions/:id?', possessionActions.publicPossessions);
 	app.post('/possessions', auth.requiresLogin ,possessionActions.createPossession);
 	app.del('/possessions/:id', auth.requiresLogin ,possessionActions.deletePossession);
 
