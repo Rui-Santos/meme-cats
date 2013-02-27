@@ -1,14 +1,11 @@
 var mongoose = require('mongoose'),
     Possession = mongoose.model('Possession'),
     s3 = require('../lib/image/s3'),
-    path = require('path'),
     fs = require('fs'),
-    findPossessions = Possession.find(),
-    imageRetryTimer = 0,
-    imageSaveAttempts = 0;
+    findPossessions = Possession.find();
 
 
-function validateImage(img, next){
+function validateImage(img){
 
     if(img){
         var size = img.size,
@@ -34,7 +31,7 @@ function saveImage(img, userId, callback){
 
     var remotePath = userId+'/'+img.name;
 
-    s3.putImage(userId+'/'+img.name, img.path, 'public-read' ,function(error, result){
+    s3.putImage(userId+'/'+img.name, img.path, 'public-read' ,function(error){
 
         if(error){
             return callback(new Error(error));
@@ -144,7 +141,7 @@ exports.createPossession = function (req, res, next) {
             json: function(){
                 return res.json(possession);
             }
-        })
+        });
     });
 };
 
@@ -159,7 +156,7 @@ exports.deletePossession  = function (req, res, next) {
 
             var imagePath = req.user.id + possession.photo.substring(possession.photo.lastIndexOf('/'));
 
-            deleteImage(imagePath, function(err, success){
+            deleteImage(imagePath, function(err){
                 if (err) return next(new Error(err));
             });
 
