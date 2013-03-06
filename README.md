@@ -1,4 +1,4 @@
-wheres-my-stuff
+meme-cats
 ===============
 
 [![Build Status](https://secure.travis-ci.org/jsturgis/meme-cats.png)](http://travis-ci.org/jsturgis/meme-cats)
