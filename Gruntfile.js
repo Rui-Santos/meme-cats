@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       }
     },
     jasmine: {
-      wms: {
+      app: {
         src: 'public/js/app/**/*.js',
         options: {
           specs: 'test/client_specs/**/*.spec.js',
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     },
     exec: {
       tmpClone: {
-        command: 'mkdir ./tmpbuild && cd ./tmpbuild && git clone https://github.com/jsturgis/wheres-my-stuff.git --recursive && cd ./wheres-my-stuff && git checkout master',
+        command: 'mkdir ./tmpbuild && cd ./tmpbuild && git clone https://github.com/jsturgis/meme-cats.git --recursive && cd ./meme-cats && git checkout master',
         stdout: true,
         stderr: true
       },
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 
   // register tasks
   grunt.registerTask('default', ['jshint', 'test']);
-  grunt.registerTask('test', ['jshint', 'connect', 'jasmine:wms', 'nodeunit:all']);
+  grunt.registerTask('test', ['jshint', 'connect', 'jasmine:app', 'nodeunit:all']);
   grunt.registerTask('deploy', ['exec:clean', 'test', 'exec:tmpClone', 'requirejs:compile', 'exec:deploy', 'exec:clean']);
   grunt.registerTask('clean', ['exec:clean']);
   grunt.registerTask('buildLocal', ['exec:clean', 'test','requirejs:compileLocal']);

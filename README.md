@@ -1,7 +1,7 @@
 wheres-my-stuff
 ===============
 
-[![Build Status](https://secure.travis-ci.org/jsturgis/wheres-my-stuff.png)](http://travis-ci.org/jsturgis/wheres-my-stuff)
+[![Build Status](https://secure.travis-ci.org/jsturgis/meme-cats.png)](http://travis-ci.org/jsturgis/meme-cats)
 
 ##installation
 
@@ -11,12 +11,12 @@ wheres-my-stuff
 2. copy the env.json file to the config folder (request from jeff or pat)
 
 3. git clone the project:
-	https://github.com/jsturgis/wheres-my-stuff --recursive
+	https://github.com/jsturgis/meme-cats --recursive
 
 4. run "npm install" from the terminal
 
 5. for the auth to work you will need to edit your /etc/hosts file and add:
-	127.0.0.1	dev.jsturgis.wheres-my-stuff.jit.su
+	127.0.0.1	dev.jsturgis.meme-cats.jit.su
 
 6. cp pre-commit.sh .git/hooks/pre-commit && chmod 755 .git/hooks/pre-commit
 
