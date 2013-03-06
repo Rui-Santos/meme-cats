@@ -104,7 +104,7 @@ exports.publicPossessions = function (req, res, next) {
                 var rsp = {
                     possessions: items,
                     addLink: '/possessions/add/form'
-                }
+                };
                 return res.json(rsp);
             }
         });
@@ -146,7 +146,7 @@ exports.userPossessions = function(req, res, next){
                 var rsp = {
                     possessions: items,
                     addLink: '/possessions/add/form'
-                }
+                };
                 return res.json(rsp);
             }
         });
@@ -154,7 +154,7 @@ exports.userPossessions = function(req, res, next){
 };
 
 // render the add possession form
-exports.addPossession = function(req, res, next){
+exports.addPossession = function(req, res){
     res.format({
         html: function(){
             return res.render('possessions/add', {
@@ -168,7 +168,7 @@ exports.addPossession = function(req, res, next){
                 });
         }
     });
-}
+};
 
 // create a possession
 exports.createPossession = function (req, res, next) {
@@ -220,7 +220,7 @@ exports.createPossession = function (req, res, next) {
             json: function(){
                 var rsp = {
                     possessions: possession
-                }
+                };
                 return res.json(rsp);
             }
         });
