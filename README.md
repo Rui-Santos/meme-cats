@@ -13,20 +13,18 @@ wheres-my-stuff
 3. git clone the project:
 	https://github.com/jsturgis/wheres-my-stuff --recursive
 
-4. switch to dev branch "git checkout development"
+4. run "npm install" from the terminal
 
-5. run "npm install" from the terminal
-
-6. for the auth to work you will need to edit your /etc/hosts file and add:
+5. for the auth to work you will need to edit your /etc/hosts file and add:
 	127.0.0.1	dev.jsturgis.wheres-my-stuff.jit.su
 
-7. cp pre-commit.sh .git/hooks/pre-commit && chmod 755 .git/hooks/pre-commit
+6. cp pre-commit.sh .git/hooks/pre-commit && chmod 755 .git/hooks/pre-commit
 
-8. sudo npm install -g jshint
+7. sudo npm install -g jshint
 
-9. sudo npm install -g grunt-cli
+8. sudo npm install -g grunt-cli
 
-10. (windows only) from windows run grunt jshint before committing and fix any errors, all other OS will do this automatically via a pre-commit hook.
+9. (windows only) from windows run grunt jshint before committing and fix any errors, all other OS will do this automatically via a pre-commit hook.
 
 ##Start the app
 

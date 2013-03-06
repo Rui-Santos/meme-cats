@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     },
     exec: {
       tmpClone: {
-        command: 'mkdir ./tmpbuild && cd ./tmpbuild && git clone https://github.com/jsturgis/wheres-my-stuff.git --recursive',
+        command: 'mkdir ./tmpbuild && cd ./tmpbuild && git clone https://github.com/jsturgis/wheres-my-stuff.git --recursive && cd ./wheres-my-stuff && git checkout master',
         stdout: true,
         stderr: true
       },
