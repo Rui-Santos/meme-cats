@@ -32,7 +32,7 @@ var mongoose = require('mongoose'),
 
                 return cb(null, items);
         });
-    }
+    };
 
     /**
     * virtuals
