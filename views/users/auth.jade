@@ -7,8 +7,7 @@ block content
   .line
     .unit.size1of1
       if (typeof errors !== 'undefined')
-        .error
-          ul
-            each error in errors
-              li= error.type
-    block auth
+        each error in errors
+          p.alert.alert-error= error.type
+            button(type="button", data-dismiss="alert", onclick="javascript: $(this).closest('.alert-error').remove()").close ×
+  block auth

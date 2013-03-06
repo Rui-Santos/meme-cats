@@ -1,6 +1,8 @@
 extends ../layout
 
 block content
-  h1= user.name
-  p= user.email
-  a(href= possessions) my stuff
+    h1= user.name
+    p= user.email
+    h3
+        a(href="/logout") Logout
+    a(href= possessions) my stuff

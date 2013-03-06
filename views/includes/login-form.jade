@@ -1,26 +1,24 @@
-p.fb-login
-  a(href="/auth/facebook") FB
-p.tw-login
-  a(href="/auth/twitter") TW
-.login-thumb.b Use your email address
+.login
+  include ../includes/social-auth
 
-form.login.form-horizontal(action="/users/session", method="post")
+  hr
 
-  if message.length
-    p.error= message
+  form.login-form.form-horizontal(action="/users/session", method="post")
+    fieldset
+      if message.length
+        p.error= message
 
-  .control-group
-    label.control-label(for='email') Email
-    .controls
-      input#email(type='text', name="email", placeholder='Email')
+      .control-group
+        label.control-label(for='email') Email
+        .controls
+          input#email(type='text', name="email", placeholder='Email')
 
-  .control-group
-    label.control-label(for='password') Password
-    .controls
-      input#password(type='password', name="password", placeholder='Password')
+      .control-group
+        label.control-label(for='password') Password
+        .controls
+          input#password(type='password', name="password", placeholder='Password')
 
-  .form-actions
-    button.btn.btn-primary(type='submit') Login
-    &nbsp;
-    | or&nbsp;
-    a.show-signup(href="/signup") sign up
+      .control-group
+        .controls
+          input.btn(type='submit') Login
+          a.btn.btn-link(href="/signup") sign up

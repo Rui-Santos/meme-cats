@@ -3,53 +3,10 @@ extends layout
 block content
   .body
     hr
-    if !user
-      // login methods
-      .login
-        h2.login-header Login
-        include includes/login-form
-    else
-      // user is already logged in
 
-      h2.add-item-header.header Track an item!
-      .add-item
+    // recent possessions
+    h3 recent items
+    include includes/possessions-list
 
-        // TODO: write a module to hook this up
-        form(action="/possessions", method="POST", enctype="multipart/form-data")
-          input(type="file", name="img")
-          p
-            label(for="possession-name") item name
-            br
-            input(type="text", id="possession-name", name="possession-name", placeholder="item name")
-          p
-            label(for="possession-location") item location
-            br
-            input(type="text", id="possession-location", name="possession-location", placeholder="item location")
 
-          br
-          input(type="checkbox", name="possession-public", value="true")
-          span  public?
-          br
-          input(type="checkbox", name="possession-lendable", value="true")
-          span  lendable?
-          br
-          input(type="checkbox", name="possession-lent", value="true")
-          span  lent?
-          p
-            label(for="possession-condition") item condition
-            br
-            input(type="text", id="possession-condition", name="possession-condition", placeholder="good")
-          p
-            label(for="possession-price") item price
-            br
-            input(type="number", name="possession-price", id="possession-price")
-          p
-            label(for="possession-category") item category
-            br
-            input(type="category", name="possession-category", id="possession-category", placeholder="stuff")
-
-          input(type="submit", name="possession-submit", id="possession-submit")
-
-      p.logout
-        a(href="/logout") Logout
     hr

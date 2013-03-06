@@ -75,13 +75,15 @@ function PossessionObject(req, imagePath){
 exports.publicPossessions = function (req, res, next) {
 
     var id = req.param('id'),
-        query = Possession.where('publicItem', true);
+        query = Possession.where('publicItem', true),
+        view = 'possessions/list';
 
     if(id){
-        query.where('_id', id)
+        query.where('_id', id);
+        view = 'possessions/possession';
     }else{
         query.limit(10)
-        .sort('-dateCreated')
+        .sort('-dateCreated');
     }
 
     // display 10 most recent possessions
@@ -91,17 +93,17 @@ exports.publicPossessions = function (req, res, next) {
         }
         res.format({
             html: function(){
-                return res.render('possessions/list', {
+                return res.render(view, {
                     title: 'possessions',
                     possessions: items,
-                    resourcePath: req.path
+                    addLink: '/possessions/add/form'
                 });
             },
 
             json: function(){
                 var rsp = {
                     possessions: items,
-                    resourcePath: req.path
+                    addLink: '/possessions/add/form'
                 }
                 return res.json(rsp);
             }
@@ -109,17 +111,20 @@ exports.publicPossessions = function (req, res, next) {
     });
 };
 
+// show possessions owned by a user
 exports.userPossessions = function(req, res, next){
 
     var userId = req.user.id,
         id = req.param('id'),
-        query = Possession.where('owner', userId);
+        query = Possession.where('owner', userId),
+        view = 'possessions/list';
 
     if(id){
-        query.where('_id', id)
+        query.where('_id', id);
+        view = 'possessions/possession';
     }else{
         query.limit(10)
-        .sort('-dateCreated')
+        .sort('-dateCreated');
     }
 
     // display 10 most recent possessions
@@ -130,23 +135,40 @@ exports.userPossessions = function(req, res, next){
 
         res.format({
             html: function(){
-                return res.render('possessions/list', {
+                return res.render(view, {
                     title: 'possessions',
                     possessions: items,
-                    resourcePath: req.path
+                    addLink: '/possessions/add/form'
                 });
             },
 
             json: function(){
                 var rsp = {
                     possessions: items,
-                    resourcePath: req.path
+                    addLink: '/possessions/add/form'
                 }
                 return res.json(rsp);
             }
         });
     });
 };
+
+// render the add possession form
+exports.addPossession = function(req, res, next){
+    res.format({
+        html: function(){
+            return res.render('possessions/add', {
+                        title: 'create a possession'
+                });
+        },
+
+        json: function(){
+            return res.render('includes/create-possession-form', function(err, viewStr){
+                    res.json({html: viewStr});
+                });
+        }
+    });
+}
 
 // create a possession
 exports.createPossession = function (req, res, next) {
@@ -191,15 +213,13 @@ exports.createPossession = function (req, res, next) {
             html: function(){
                 return res.render('possessions/list', {
                     title: 'possessions',
-                    possessions: [possession],
-                    resourcePath: req.path
+                    possessions: [possession]
                 });
             },
 
             json: function(){
                 var rsp = {
-                    possessions: possession,
-                    resourcePath: req.path
+                    possessions: possession
                 }
                 return res.json(rsp);
             }

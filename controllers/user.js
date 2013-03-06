@@ -13,6 +13,7 @@ exports.authCallback = function (req, res) {
 exports.login = function (req, res) {
   res.render('users/login', {
       title: 'Login',
+      authAction: 'Login',
       message: req.flash('error')
   });
 };
@@ -21,7 +22,9 @@ exports.login = function (req, res) {
 exports.signup = function (req, res) {
   res.render('users/signup', {
       title: 'Sign up',
-      user: new User()
+      authAction: 'Signup',
+      user: new User(),
+      message: req.flash('error')
   });
 };
 
@@ -46,7 +49,7 @@ exports.create = function (req, res, next) {
       if(err.code === 11000){
         err.errors = { user_exists:{ type: 'Username already exists' }};
       }
-      return res.render('users/signup', { errors: err.errors, user: user, title: 'signup' });
+      return res.render('users/signup', { errors: err.errors, user: user, title: 'signup',  authAction: 'Signup',});
     }
     req.logIn(user, function(err) {
       if (err) return next(err);

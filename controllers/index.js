@@ -1,11 +1,27 @@
+var mongoose = require('mongoose'),
+	Possession = mongoose.model('Possession');
 
 /*
  * GET home page.
  */
+exports.index = function(req, res, next){
 
-exports.index = function(req, res){
-	res.render('index', {
-		title: 'Wheres my stuff',
-		message: req.flash('error')
-	});
+	if(req.user && req.user.id){
+		Possession.getRecent(10, function(err, possessions){
+			if(err){
+				return next(err);
+			}
+
+			res.render('index', {
+				title: 'Wheres my stuff',
+				message: req.flash('error'),
+				possessions: possessions
+			});
+		});
+	} else {
+		res.render('intro', {
+			title: 'Wheres my stuff',
+			message: req.flash('error')
+		});
+	}
 };

@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    each possession in possessions
+        if user && String(user.id) === String(possession.owner)
+            p.possession-actions
+                a.delete-possession(href="javascript: void(0)")
+                    i.icon-trash
+                    |delete
+        h3 #{possession.name}
+        a(href=possession.detailsLink)
+            img(src= possession.photo, width="200")
+        p location:
+            span= possession.location
+        p condition:
+            span= possession.condition

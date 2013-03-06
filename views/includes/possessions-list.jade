@@ -1,0 +1,6 @@
+ul.list
+    each possession in possessions
+        li(id= possession._id)
+            h3 #{possession.name}
+            a(href=possession.detailsLink)
+                img(src= possession.photo, width="200")
