@@ -9,7 +9,6 @@ meme-cats
     [Nodejs](http://nodejs.org/ "Nodejs")
 
 2. copy the env.json file to the config folder (request from jeff or pat)
-
 ```shell
 cp env.json ./config/env.json
 ```
