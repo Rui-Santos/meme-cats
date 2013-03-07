@@ -20,7 +20,9 @@ meme-cats
 
 6. cp pre-commit.sh .git/hooks/pre-commit && chmod 755 .git/hooks/pre-commit
 
-7. sudo npm install -g jshint
+7. '''shell
+	sudo npm install -g jshint
+	'''
 
 8. sudo npm install -g grunt-cli
 
