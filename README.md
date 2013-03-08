@@ -8,7 +8,7 @@ meme-cats
 1. install the latest nodejs:
     [Nodejs](http://nodejs.org/ "Nodejs")
 
-2. copy the env.json file to the config folder (request from jeff or pat)
+2. copy the env.json file to the config folder (must be requested from a contributor)
 ```shell
 cp env.json ./config/env.json
 ```
