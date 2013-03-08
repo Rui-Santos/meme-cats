@@ -1,7 +1,7 @@
 meme-cats
 ===============
 
-[![Build Status](https://secure.travis-ci.org/jsturgis/meme-cats.png)](http://travis-ci.org/jsturgis/meme-cats)
+[![Build Status](https://api.travis-ci.org/jsturgis/meme-cats.png?branch=development)](https://api.travis-ci.org/jsturgis/meme-cats.png?branch=development)
 
 ##installation
 
