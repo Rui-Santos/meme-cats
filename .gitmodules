@@ -1,4 +1,3 @@
-
-[submodule "public/stylesheets/oocss"]
-	path = public/stylesheets/oocss
-	url = https://github.com/stubbornella/oocss.git
+[submodule "public/stylesheets/bootstrap-sass"]
+	path = public/stylesheets/bootstrap-sass
+	url = https://github.com/thomas-mcdonald/bootstrap-sass.git
