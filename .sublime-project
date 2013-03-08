@@ -3,7 +3,7 @@
 	[
 		{
 			"path": ".",
-			"folder_exclude_patterns": ["tmp", "log", "node_modules", "docs", "jsdoc-toolkit"],
+			"folder_exclude_patterns": ["tmp", "log", "node_modules", "docs", "jsdoc-toolkit", ".sass-cache"],
             "file_exclude_patterns": ["*.min.js", "*.gz", "*.sublime-workspace"]
 		}
 	]

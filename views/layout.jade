@@ -3,14 +3,14 @@ html(lang="en")
   head
     meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
     title= title
-    link(rel='stylesheet', media='all', href='/stylesheets/style.css')
+    link(rel='stylesheet', media='all', href='/stylesheets/css/screen.css')
   body
 
-    .page.gs960
+    .page.container-fluid
         // common header
         include includes/header
 
-        .body
+        .body.row-fluid
             block content
 
         // common footer

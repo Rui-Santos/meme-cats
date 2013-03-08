@@ -30,12 +30,12 @@ module.exports = {
       facebook: {
           clientID: FB_CID,
           clientSecret: FB_SECRET,
-          callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/facebook/callback'
+          callbackURL: 'http://dev.jsturgis.meme-cats.jit.su:'+PORT+'/auth/facebook/callback'
       },
       twitter: {
           clientID: TW_CID,
           clientSecret: TW_SECRET,
-          callbackURL: 'http://dev.jsturgis.wheres-my-stuff.jit.su:'+PORT+'/auth/twitter/callback'
+          callbackURL: 'http://dev.jsturgis.meme-cats.jit.su:'+PORT+'/auth/twitter/callback'
       },
       s3: {
         accessKey: S3_ACCESSKEY,
@@ -54,12 +54,12 @@ module.exports = {
       facebook: {
           clientID: FB_CID,
           clientSecret: FB_SECRET,
-          callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/facebook/callback'
+          callbackURL: 'http://jsturgis.meme-cats.jit.su/auth/facebook/callback'
       },
       twitter: {
           clientID: TW_CID,
           clientSecret: TW_SECRET,
-          callbackURL: 'http://jsturgis.wheres-my-stuff.jit.su/auth/twitter/callback'
+          callbackURL: 'http://jsturgis.meme-cats.jit.su/auth/twitter/callback'
       },
       s3: {
         accessKey: S3_ACCESSKEY,

@@ -1,11 +1,7 @@
-header#main-header
+header#main-header.row-fluid
     p.auth-status
         a(href=loginHref).title
             i.icon-user
             | #{loginText}
-    .center-text
-        a(href="/")
-            img(src="/images/logo.png")
-    if user && user.id
-        p
-            a(href="/possessions/add/form") add an item
+    .header-text
+        a(href="/") header
