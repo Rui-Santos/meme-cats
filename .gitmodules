@@ -1,9 +1,1 @@
-[submodule "public/stylesheets/320_up"]
-	path = public/stylesheets/320_up
-	url = https://github.com/malarkey/320andup.git
-[submodule "public/stylesheets/oocsslib"]
-	path = public/stylesheets/oocsslib
-	url = https://github.com/stubbornella/oocss.git
-[submodule "public/stylesheets/normalize"]
-	path = public/stylesheets/normalize
-	url = https://github.com/necolas/normalize.css.git
+
