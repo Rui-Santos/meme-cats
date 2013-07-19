@@ -1,0 +1,22 @@
+extends ../layout
+
+block scripts
+  script.
+    require(['modules/meme/initMeme'])
+
+block content
+  h1 #{title}
+  a#init-canvas(href="javascript: void(0)") init canvas
+  a#change-image(href="javascript: void(0)", data-src="imageproxy/http%3A%2F%2Ffarm9.staticflickr.com%2F8219%2F8392416945_815e3b635e_z.jpg") change image
+
+  .capit-img-wrapper
+    .capit-img
+      img#srcimg(src="images/meme/testimage.jpg")
+      canvas#preview(style="display: none;")
+    .recap-form-wrapper
+    h3.capit-form-header Caption:
+      form#inputs.capit-form
+        p.capit-input-wrapper
+          input#top-input.capit-input(type='text', placeholder='Top Caption', value='')
+        p.capit-input-wrapper
+          input#bottom-input.capit-input(type='text', placeholder='Bottom Caption', value='')

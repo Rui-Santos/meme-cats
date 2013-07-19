@@ -38,7 +38,7 @@ function saveImage(img, userId, callback){
 
         // delete tmp image
         fs.unlink(img.path);
-        return callback(null, 'http://s3.amazonaws.com/wms-assets/' + remotePath);
+        return callback(null, 'http://s3.amazonaws.com/meme-assets/' + remotePath);
     });
 }
 
