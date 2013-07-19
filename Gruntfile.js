@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       browser: {
         options: lintConfBrowser,
         files: {
-          src: ['public/js/**/*.js', 'public/js/*.js']
+          src: ['public/js/app/modules/**/*.js', 'public/js/*.js']
         }
       }
     },
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
           template: require('grunt-template-jasmine-requirejs'),
           templateOptions: {
             requireConfig : {
-                baseUrl: "./public/js/app/"
+                baseUrl: "public/js/app/"
             }
           }
         }

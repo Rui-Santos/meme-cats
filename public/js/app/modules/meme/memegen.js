@@ -10,6 +10,10 @@ define(function() {
 
     return function(canvas, image, fontSize){
 
+        if(!canvas || !image){
+            return;
+        }
+
         // handle jquery objects being passed in
         canvas = canvas.jquery ? canvas[0] : canvas;
         image = image.jquery ? image[0] : image;

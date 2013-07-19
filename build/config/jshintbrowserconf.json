@@ -4,6 +4,7 @@
     "globals": {
 		"require": true,
 		"define": true,
+		"Modernizr": true,
 		"$": true
     },
     "browser": true,

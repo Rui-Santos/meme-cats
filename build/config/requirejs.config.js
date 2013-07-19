@@ -1,6 +1,6 @@
 module.exports = {
     config: {
-        appDir: "./tmpbuild/wheres-my-stuff",
+        appDir: "./tmpbuild/meme-cats",
         baseUrl: "./public/js/app/",
         dir: "./tmpbuild/build",
         //Comment out the optimize line if you want

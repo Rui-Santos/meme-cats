@@ -2,7 +2,7 @@ require.config({
     paths: {
         "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min",
         "backbone": "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min",
-        "lodash": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.0-rc.3/lodash.min",
+        "lodash": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.0-rc.3/lodash.min"
     },
     shim: {
             'backbone': {
@@ -16,7 +16,7 @@ require.config({
     }
 });
 
-require(['jquery', 'libs/modernizr'], function($, modernizr) {
+require(['jquery', 'libs/modernizr'], function() {
     //loaded scripts
     "use strict";
 });
