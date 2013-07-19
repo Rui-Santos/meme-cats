@@ -50,7 +50,7 @@ grunt test
 
 ##To build locally
 ```shell
-grunt requirejs:compileLocal
+grunt buildLocal
 ```
 
 this will build to the tmpbuild dir, after testing you should remove the dir or delete it manually.
