@@ -1,9 +1,20 @@
-describe('Example AMD test', function(){
-  var math = require('modules/login/math');
+describe('meme test', function(){
+  var MemeGen = require('modules/meme/memegen');
 
-  describe('Sum', function(){
-    it('Should add two numbers together', function(){
-      expect(math.sum(2,10)).toEqual(12);
+  	var canvas = document.createElement('canvas'),
+  		memegen,
+  		img = new Image();
+
+  	img.src = '/public/images/meme/testimage.jpg';
+	canvas.id = 'testCanvas';
+
+  	document.body.appendChild(canvas);
+  	document.body.appendChild(img);
+
+	memegen = new MemeGen(canvas, img);
+	memegen.initCapit();
+
+    it('should init successfully', function(){
+		expect(memegen.isInited()).toBe(true);
     });
-  });
 });
