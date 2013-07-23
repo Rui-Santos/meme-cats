@@ -5,7 +5,7 @@ exports.getCrumb = function (req, res, next) {
     res.crumb = 'home';
 
     if(crumb) {
-    	res.crumb = crumb[0];
+        res.crumb = crumb[0];
     }
 
     next();
