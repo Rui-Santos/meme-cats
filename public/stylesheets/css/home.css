@@ -1,0 +1,10 @@
+/* line 1, ../sass/_pure-extensions.scss */
+.primary-button {
+  background: #02a6eb;
+  color: #fff;
+}
+
+/* line 2, ../sass/home.scss */
+.body {
+  margin: 2em auto 0;
+}

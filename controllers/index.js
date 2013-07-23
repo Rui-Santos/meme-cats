@@ -15,12 +15,14 @@ exports.index = function(req, res, next){
 			res.render('index', {
 				title: 'Wheres my stuff',
 				message: req.flash('error'),
+				crumb: res.crumb,
 				possessions: possessions
 			});
 		});
 	} else {
 		res.render('intro', {
 			title: 'Wheres my stuff',
+			crumb: res.crumb,
 			message: req.flash('error')
 		});
 	}

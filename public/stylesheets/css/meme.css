@@ -1,0 +1,11 @@
+/* line 1, ../sass/meme.scss */
+.capit-img-wrapper {
+  position: relative;
+}
+
+/* line 5, ../sass/meme.scss */
+#preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

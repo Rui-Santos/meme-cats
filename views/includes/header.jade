@@ -1,7 +1,14 @@
-header#main-header.row-fluid
-    p.auth-status
-        a(href=loginHref).title
+header#main-header.header
+    .pure-menu.pure-menu-open.pure-menu-fixed.pure-menu-horizontal
+        a(href=loginHref).title.pure-menu-heading
             i.icon-user
             | #{loginText}
-    .header-text
-        a(href="/") header
+        ul
+          li(class = crumb === "home" ? "pure-menu-selected" : "")
+            a(href='/') Home
+          li(class = crumb === "meme" ? "pure-menu-selected" : "")
+            a(href='/meme') Meme Generator
+          li(class = crumb === "images" ? "pure-menu-selected" : "")
+            a(href='#') Images
+          li(class = crumb === "about" ? "pure-menu-selected" : "")
+            a(href='#') About

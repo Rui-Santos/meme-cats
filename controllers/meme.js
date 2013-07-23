@@ -5,7 +5,7 @@ var lastCacheClear = Date.now(),
 
 // meme generator page
 exports.meme = function(req, res){
-  res.render('memes/meme', { title: 'meme' });
+  res.render('memes/meme', { title: 'meme', crumb: res.crumb });
 };
 
 /**

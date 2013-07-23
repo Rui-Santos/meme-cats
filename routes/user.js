@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
     possessionActions = require('../controllers/possession'),
     User = mongoose.model('User'),
     auth = require('../middleware/auth/authorization'),
+    viewHelpers = require('../middleware/viewHelpers'),
     passport = require('passport');
 
 
@@ -15,7 +16,7 @@ module.exports.init = function(app){
   app.get('/logout', userActions.logout);
   app.post('/users', userActions.create);
   app.post('/users/session', passport.authenticate('local', {failureRedirect: '/login', failureFlash: 'Invalid email or password.'}), userActions.session);
-  app.get('/users/:userId', auth.requiresLogin, userActions.show);
+  app.get('/users/:userId', [auth.requiresLogin, viewHelpers.getCrumb], userActions.show);
   app.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'email', 'user_about_me'], failureRedirect: '/login' }), userActions.signin);
   app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), userActions.authCallback);
   app.get('/auth/twitter', passport.authenticate('twitter', { failureRedirect: '/login' }), userActions.signin);

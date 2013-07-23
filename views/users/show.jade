@@ -1,7 +1,8 @@
 extends ../layout
 
 block content
-    h1= user.name
-    p= user.email
-    h3
-        a(href="/logout") Logout
+    .pure-u
+        h1= user.name
+        p= user.email
+        h3
+            a(href="/logout").pure-button.primary-button Logout

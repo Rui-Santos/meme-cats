@@ -1,4 +1,4 @@
-describe('meme test', function(){
+describe('meme', function(){
   var MemeGen = require('modules/meme/memegen');
 
   	var canvas = document.createElement('canvas'),

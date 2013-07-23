@@ -14,6 +14,7 @@ exports.login = function (req, res) {
   res.render('users/login', {
       title: 'Login',
       authAction: 'Login',
+      crumb: res.crumb,
       message: req.flash('error')
   });
 };
@@ -23,6 +24,7 @@ exports.signup = function (req, res) {
   res.render('users/signup', {
       title: 'Sign up',
       authAction: 'Signup',
+      crumb: res.crumb,
       user: new User(),
       message: req.flash('error')
   });
@@ -67,6 +69,7 @@ exports.show = function (req, res, next) {
         html: function(){
             return  res.render('users/show', {
                         title: user.name,
+                        crumb: res.crumb,
                         user: user,
                         possessions: possLink
                     });
